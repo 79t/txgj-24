@@ -42,7 +42,7 @@ function love.load()
     }
 
     world = {
-        levelFile = love.filesystem.read("assets/testLevel.txt"),
+        levelFile = love.filesystem.read("assets/level0.txt"),
         size = {x = 16, y = 16},
         tileSize = {width = 0, height = 0},
         tileMap = {}
@@ -67,6 +67,15 @@ function love.load()
                 -- nImage = "assets/floorTile.png"
                 -- nTileType = "floor"
                 local tile = FloorTile(xCounter, yCounter)
+                table.insert(world.tileMap, tile)
+            elseif ch == "H" then
+                local tile = HazardTile(xCounter, yCounter)
+                table.insert(world.tileMap, tile)
+            elseif ch == "E" then
+                local tile = EndTile(xCounter, yCounter)
+                table.insert(world.tileMap, tile)
+            elseif ch == "S" then
+                local tile = StartTile(xCounter, yCounter)
                 table.insert(world.tileMap, tile)
             end
             -- local tile = {

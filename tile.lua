@@ -34,36 +34,36 @@ end
 -- TODO 
 ---@param ball Ball
 ---@param world World
----@return boolean
+---@return string
 function Tile:checkCollision(ball, world)
-    if not self.canCollide then
-        return false
+    if (self.canColide == false) then
+        return "false"
     end
 
-    left = self.topLeft.x
-    top = self.topLeft.y 
-    right = self.topLeft.x + world.tileSize.width 
-    bottom = self.topLeft.y + world.tileSize.height
-
-
-    if (IsBetween(ball.center.x, left, right)) then
-        if (IsWithin(ball.center.y, top, ball.trueSize.height/2)) then
-            ball.velocity.y = -math.abs(ball.velocity.y)*.9
-            return true
-        elseif (IsWithin(ball.center.y, bottom, ball.trueSize.height/2)) then
-            ball.velocity.y = math.abs(ball.velocity.y)*.9
-            return true
-        end
-    elseif (IsBetween(ball.center.y, top, bottom)) then
-        if (IsWithin(ball.center.x, left, ball.trueSize.width/2)) then
-            ball.velocity.x = -math.abs(ball.velocity.x)*.9
-            return true
-        elseif (IsWithin(ball.center.x, right, ball.trueSize.width/2)) then
-            ball.velocity.x = math.abs(ball.velocity.x)*.9
-            return true
+    if (self.inBetween(self.topLeft.x, ball.center.x, self.topLeft.x + world.tileSize.width)) then
+        if (self.isWithin(ball.center.y, self.topLeft.y, ball.trueSize.height)) then
+            return "top"
+        elseif (self.isWithin(ball.center.y, self.topLeft.y + world.tileSize.height, ball.trueSize.height)) then
+            return "bottom"
         end
     end
-    return false
+
+    if (self.inBetween(self.topLeft.y, ball.center.y, self.topLeft.y + world.tileSize.width)) then
+        if (self.isWithin(ball.center.x, self.topLeft.x, ball.trueSize.width)) then
+            return "left"
+        elseif (self.isWithin(ball.center.x, self.topLeft.x + world.tileSize.width, ball.trueSize.width)) then
+            return "right"
+        end
+    end
+    return "false"
+end
+
+function Tile:inBetween(lower, middle, upper)
+    return lower < middle and middle < upper
+end
+
+function Tile:isWithin(point1, point2, minDiff)
+    return math.abs(point1 - point2) < minDiff
 end
 
 return Tile

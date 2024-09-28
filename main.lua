@@ -2,13 +2,16 @@ Object = require "classic"
 require "tile"
 require "floorTile"
 require "wallTile"
+require "startTile"
+require "endTile"
+require "hazardTile"
 
 -- mywindow = {}
 
 -- myworld = {}
 
 myworld = {
-    levelFile = love.filesystem.read("assets/testLevel.txt"),
+    levelFile = love.filesystem.read("assets/level0.txt"),
     tileMap = {}
 }
 
@@ -35,6 +38,15 @@ function love.load()
                 table.insert(myworld.tileMap, tile)
             elseif ch == "F" then
                 local tile = FloorTile(xCounter, yCounter)
+                table.insert(myworld.tileMap, tile)
+            elseif ch == "H" then
+                local tile = HazardTile(xCounter, yCounter)
+                table.insert(myworld.tileMap, tile)
+            elseif ch == "E" then
+                local tile = EndTile(xCounter, yCounter)
+                table.insert(myworld.tileMap, tile)
+            elseif ch == "S" then
+                local tile = StartTile(xCounter, yCounter)
                 table.insert(myworld.tileMap, tile)
             end
         end

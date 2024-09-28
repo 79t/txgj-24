@@ -1,26 +1,12 @@
 Tile = require "tile"
 
----@class FloorTile: Tile
----@
+StartTile = Tile:extend()
 
-FloorTile = Tile:extend()
+function StartTile:new(x, y)
+    StartTile.super.new(self)
+    self.canCollide = true
+    self.image = love.graphics.newImage("assets/startTile.png")
 
-wHeight = 600 
-windowMargin = 100
-wSize = 16
-
-tileSize = { 
-    width = wHeight / wSize,
-    height = wHeight/ wSize
-}
-
-
-
-function FloorTile:new(x, y)
-    FloorTile.super.new(self)
-    self.canCollide = false
-    -- self.image = "assets/mog.jpeg"
-    self.image = love.graphics.newImage("assets/floorTile.png")
     self.topLeft = {
         x = windowMargin + ((x - 1) * tileSize.width),
         y = (y - 1) * tileSize.height
@@ -30,15 +16,15 @@ function FloorTile:new(x, y)
         x = self.topLeft.x + tileSize.width / 2,
         y = self.topLeft.y + tileSize.height / 2
     }
+
 end
 
 -- TODO 
 ---@param ball Ball
 ---@param world World
 ---@return boolean
-function FloorTile.checkCollision(ball, world)
+function StartTile:CheckCollision(ball, world)
     local result = self.super.checkCollision(ball, world)
     return not result == "false"
 end
 
--- return FloorTile
