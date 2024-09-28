@@ -1,0 +1,5 @@
+---@class World
+---@field levelFile string
+---@field size {x: number, y: number}
+---@field tileSize {width: number, height: number}
+---@field tileMap Tile[][]
