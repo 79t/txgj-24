@@ -1,4 +1,5 @@
 require "util"
+require "world"
 
 ---@class Tile
 ---@field image string
@@ -8,7 +9,7 @@ require "util"
 ---@field gameCoord {x: number, y: number}
 ---@field checkCollision fun(ball: Ball, world: World): boolean
 
-Tile = Object:extend()
+local Tile = Object:extend()
 
 Tile.scaleFactor = .5859
 
@@ -33,10 +34,8 @@ end
 
 -- TODO 
 ---@param ball Ball
----@param world World
----@return string
-function Tile:checkCollision(ball, world)
-    if (self.canColide == false) then
+function Tile:checkCollision(ball)
+    if (self.canCollide == false) then
         return "false"
     end
 

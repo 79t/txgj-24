@@ -1,15 +1,15 @@
-Tile = require "tile"
+local Tile = require "tile"
+require "world"
 
 ---@class FloorTile: Tile
----@
 
-FloorTile = Tile:extend()
+local FloorTile = Tile:extend()
 
-wHeight = 600 
-windowMargin = 100
-wSize = 16
+local wHeight = 600 
+local windowMargin = 100
+local wSize = 16
 
-tileSize = { 
+local tileSize = { 
     width = wHeight / wSize,
     height = wHeight/ wSize
 }
@@ -34,11 +34,11 @@ end
 
 -- TODO 
 ---@param ball Ball
----@param world World
 ---@return boolean
-function FloorTile.checkCollision(ball, world)
-    local result = self.super.checkCollision(ball, world)
+function FloorTile:checkCollision(ball)
+    local result = self.super.checkCollision(ball)
     return not result == "false"
 end
 
 -- return FloorTile
+return FloorTile

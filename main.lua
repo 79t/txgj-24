@@ -6,62 +6,70 @@ require "startTile"
 require "endTile"
 require "hazardTile"
 
--- mywindow = {}
 
--- myworld = {}
 
-myworld = {
-    levelFile = love.filesystem.read("assets/level0.txt"),
-    tileMap = {}
-}
+local Ball = require "ball"
+local ball
 
-mywindow = {
-    margin = 100,
-    tileSpace = {
-        topLeft = {x = 125, y = 0},
-        size = {x = 600, y = 600}
-    }
-}
+require "world"
 
 
 function love.load()
 
+    local FloorTile = require "floorTile"
+    local WallTile = require "wallTile"
+    ball = Ball()
 
     local yCounter = 0
-    for line in myworld.levelFile:gmatch '%S+' do
+    for line in world.levelFile:gmatch '%S+' do
         yCounter = yCounter + 1
         local xCounter = 0
         for ch in line:gmatch '[^.]+' do --I hate this sm
             xCounter = xCounter + 1
             if ch == "W" then
                 local tile = WallTile(xCounter, yCounter)
-                table.insert(myworld.tileMap, tile)
+                table.insert(world.tileMap, tile)
             elseif ch == "F" then
                 local tile = FloorTile(xCounter, yCounter)
-                table.insert(myworld.tileMap, tile)
+                table.insert(world.tileMap, tile)
             elseif ch == "H" then
                 local tile = HazardTile(xCounter, yCounter)
-                table.insert(myworld.tileMap, tile)
+                table.insert(world.tileMap, tile)
             elseif ch == "E" then
                 local tile = EndTile(xCounter, yCounter)
-                table.insert(myworld.tileMap, tile)
+                table.insert(world.tileMap, tile)
             elseif ch == "S" then
                 local tile = StartTile(xCounter, yCounter)
-                table.insert(myworld.tileMap, tile)
+                table.insert(world.tileMap, tile)
             end
         end
     end
 
-    print(myworld.tileMap)
 end
 
 function love.draw()
    Tile = require "tile" 
-   love.graphics.rectangle("fill", mywindow.margin, 0, mywindow.tileSpace.size.x, mywindow.tileSpace.size.y)
+   love.graphics.rectangle("fill", window.margin, 0, window.tileSpace.size.x, window.tileSpace.size.y)
    local index = 0
-   while index < #myworld.tileMap do
+   while index < #world.tileMap do
     index = index+1
-    local myTile = myworld.tileMap[index]
+    local myTile = world.tileMap[index]
     love.graphics.draw(myTile.image, myTile.topLeft.x, myTile.topLeft.y, 0, Tile.scaleFactor, Tile.scaleFactor)
    end
+
+   love.graphics.draw(ball.image, ball.topLeft.x, ball.topLeft.y, 0, Ball.scaleFactor, Ball.scaleFactor)
+end
+
+function love.update()
+    ball:updateMovement()
+    ball:updatePos()
+    local index = 0
+    while index < #world.tileMap do
+        index = index + 1
+        local tile = world.tileMap[index]
+        tile:checkCollision(ball) 
+    end
+    -- if not music:isPlaying( ) then
+	-- 	love.audio.play( music )
+	-- end
 end

@@ -1,6 +1,15 @@
-Tile = require "tile"
+local Tile = require "tile"
 
-WallTile = Tile:extend()
+local WallTile = Tile:extend()
+
+local wHeight = 600 
+local windowMargin = 100
+local wSize = 16
+
+local tileSize = { 
+    width = wHeight / wSize,
+    height = wHeight/ wSize
+}
 
 function WallTile:new(x, y)
     WallTile.super.new(self)
@@ -21,10 +30,9 @@ end
 
 -- TODO 
 ---@param ball Ball
----@param world World
 ---@return boolean
-function WallTile:CheckCollision(ball, world)
-    local collisionSide = self.super.CheckCollision(ball, world)
+function WallTile:CheckCollision(ball)
+    local collisionSide = self.super.CheckCollision(ball)
     if (collisionSide == "false") then
         return false
     elseif (collisionSide == "top") then
@@ -39,3 +47,5 @@ function WallTile:CheckCollision(ball, world)
     return true
 end
 
+
+return WallTile
