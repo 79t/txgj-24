@@ -4,7 +4,7 @@
 ---@field tileSize {width: number, height: number}
 ---@field tileMap Tile[][]
 world = {
-    levelFile = love.filesystem.read("assets/level3.txt"),
+    levelFile = love.filesystem.read("assets/level0.txt"),
     size = {x = 32, y = 32},
     tileSize = {
         width = 37.5/2, height = 37.5/2 --height/size
