@@ -11,6 +11,7 @@ function LevelSelectState:enter()
 end
 
 function LevelSelectState:draw()
+    love.graphics.setBackgroundColor(0,0,0)
     love.graphics.print("Press 0 for tutorial", 120, 150)
     love.graphics.print("Press 1 for level 1", 120, 170)
     love.graphics.print("Press 2 for level 2", 120, 190)

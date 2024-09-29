@@ -4,14 +4,15 @@ local GameStateManager = require "GameStateManager"
 local Tutorial = require "states.tutorial"
 local LevelSelectState = require "states.levelSelect"
 
+local image
 function MenuState:enter()
     print("Going into menu state") 
+    image = love.graphics.newImage("assets/MenuAssets.png")
 end
 
 function MenuState:draw()
-    love.graphics.print("Labyrinth game, press ENTER to start", 120, 150)
-    love.graphics.rectangle("line", 100, 100, 300, 100)
-    love.graphics.print("press b to go back to the main menu at any time", 120, 200)
+    love.graphics.setBackgroundColor(1,1,1)
+    love.graphics.draw(image, 0, 0)
 end
 
 function MenuState:keypressed(key, scancode, isrepeat)
@@ -21,7 +22,7 @@ function MenuState:keypressed(key, scancode, isrepeat)
 end
 
 function MenuState:mousepressed(x, y, button)
-    if (x > 100 and x < 250 and y > 100 and y < 400) then
+    if (y > 400 and y < 500 and x > 315 and x < 500) then
         GameStateManager:setState(LevelSelectState)
     end
 
