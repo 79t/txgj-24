@@ -5,7 +5,7 @@ require "tile"
 require "floorTile"
 require "wallTile"
 require "startTile"
-require "endTile"
+local EndTile = require "endTile"
 require "hazardTile"
 
 

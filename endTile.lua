@@ -1,6 +1,8 @@
 local Tile = require "tile"
 local GameStateManager = require "GameStateManager"
-local WinState = require "states.win"
+-- local NST = require "states.level1"
+-- local MainMenuState = require "states.menu"
+-- local WinState = require "states.win"
 
 EndTile = Tile:extend()
 
@@ -55,7 +57,8 @@ function EndTile:checkCollision(ball)
         return false
     elseif (collisionSide == "top" or collisionSide == "bottom" or collisionSide == "left" or collisionSide == "right") then
         -- set success code here
-        GameStateManager:setState(WinState)
+        GameStateManager:setState(winScreen)
+        -- love.event.quit()
     end
     return true
 end

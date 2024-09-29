@@ -11,6 +11,7 @@ end
 function MenuState:draw()
     love.graphics.print("Labyrinth game, press ENTER to start", 120, 150)
     love.graphics.rectangle("line", 100, 100, 300, 100)
+    love.graphics.print("press b to go back to the main menu at any time", 120, 200)
 end
 
 function MenuState:keypressed(key, scancode, isrepeat)
