@@ -7,8 +7,8 @@ local windowMargin = 100
 local wSize = 16
 
 local tileSize = { 
-    width = world.tileSize.width,
-    height = world.tileSize.height
+    width = worldCfg.tileSize.width,
+    height = worldCfg.tileSize.height
 }
 
 function WallTile:new(x, y)
@@ -44,18 +44,18 @@ function WallTile:checkCollision(ball)
     -- local collisionSide = self.super.checkCollision(ball)
     local collisionSide
 
-    if (inBtwn(self.topLeft.x, ball.center.x, self.topLeft.x + world.tileSize.width)) then
+    if (inBtwn(self.topLeft.x, ball.center.x, self.topLeft.x + worldCfg.tileSize.width)) then
         if (isWithin(ball.center.y, self.topLeft.y, ball.trueSize.height/2)) then
             collisionSide =  "top"
-        elseif (isWithin(ball.center.y, self.topLeft.y + world.tileSize.height, ball.trueSize.height/2)) then
+        elseif (isWithin(ball.center.y, self.topLeft.y + worldCfg.tileSize.height, ball.trueSize.height/2)) then
             collisionSide =  "bottom"
         end
     end
 
-    if (inBtwn(self.topLeft.y, ball.center.y, self.topLeft.y + world.tileSize.width)) then
+    if (inBtwn(self.topLeft.y, ball.center.y, self.topLeft.y + worldCfg.tileSize.width)) then
         if (isWithin(ball.center.x, self.topLeft.x, ball.trueSize.width/2)) then
             collisionSide = "left"
-        elseif (isWithin(ball.center.x, self.topLeft.x + world.tileSize.width, ball.trueSize.width/2)) then
+        elseif (isWithin(ball.center.x, self.topLeft.x + worldCfg.tileSize.width, ball.trueSize.width/2)) then
             collisionSide = "right"
         end
     end
@@ -68,14 +68,14 @@ function WallTile:checkCollision(ball)
         ball.center.y = self.topLeft.y - ball.trueSize.height/2
         ball.velocity.y = -math.abs(ball.velocity.y)*multiplier
     elseif (collisionSide == "bottom") then
-        ball.center.y = self.topLeft.y + world.tileSize.height + ball.trueSize.height/2
+        ball.center.y = self.topLeft.y + worldCfg.tileSize.height + ball.trueSize.height/2
         ball.velocity.y = math.abs(ball.velocity.y)*multiplier
     elseif (collisionSide == "left") then
         ball.velocity.x = -math.abs(ball.velocity.x)*multiplier
         ball.center.x = self.topLeft.x - ball.trueSize.width/2
     elseif (collisionSide == "right") then
         ball.velocity.x = math.abs(ball.velocity.x)*multiplier
-        ball.center.x = self.topLeft.x + world.tileSize.width + ball.trueSize.width/2
+        ball.center.x = self.topLeft.x + worldCfg.tileSize.width + ball.trueSize.width/2
     end
     return true
 end

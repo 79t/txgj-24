@@ -1,15 +1,8 @@
+
+-- this gets vscode debugger working
 if arg[2] == "debug" then
     require("lldebugger").start()
 end
-
--- Object = require "classic"
--- require "tile"
--- require "floorTile"
--- require "wallTile"
--- require "startTile"
--- require "endTile"
--- require "hazardTile"
--- require "world"
 
 local GameStateManager = require "GameStateManager"
 
@@ -30,6 +23,12 @@ end
 function love.keypressed(key, scancode, isrepeat)
     GameStateManager:keypressed(key, scancode, isrepeat)
 end
+
+function love.mousepressed(x, y, button)
+    GameStateManager:mousepressed(x, y, button)
+end
+
+-- this gets vscode debugger working
 
 local love_errorhandler = love.errorhandler
 

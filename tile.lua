@@ -1,5 +1,5 @@
 require "util"
-require "world"
+-- require "world"
 
 ---@class Tile
 ---@field image string
@@ -49,18 +49,18 @@ function Tile:checkCollision(ball)
 
     print(ball.center.x)
 
-    -- if (inBtwn(self.topLeft.x, ball.center.x, self.topLeft.x + world.tileSize.width)) then
+    -- if (inBtwn(self.topLeft.x, ball.center.x, self.topLeft.x + worldCfg.tileSize.width)) then
     --     if (isWithin(ball.center.y, self.topLeft.y, ball.trueSize.height)) then
     --         return "top"
-    --     elseif (isWithin(ball.center.y, self.topLeft.y + world.tileSize.height, ball.trueSize.height)) then
+    --     elseif (isWithin(ball.center.y, self.topLeft.y + worldCfg.tileSize.height, ball.trueSize.height)) then
     --         return "bottom"
     --     end
     -- end
 
-    -- if (inBtwn(self.topLeft.y, ball.center.y, self.topLeft.y + world.tileSize.width)) then
+    -- if (inBtwn(self.topLeft.y, ball.center.y, self.topLeft.y + worldCfg.tileSize.width)) then
     --     if (isWithin(ball.center.x, self.topLeft.x, ball.trueSize.width)) then
     --         return "left"
-    --     elseif (inBtwn(ball.center.x, self.topLeft.x + world.tileSize.width, ball.trueSize.width)) then
+    --     elseif (inBtwn(ball.center.x, self.topLeft.x + worldCfg.tileSize.width, ball.trueSize.width)) then
     --         return "right"
     --     end
     -- end

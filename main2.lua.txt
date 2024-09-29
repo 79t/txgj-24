@@ -47,7 +47,7 @@ function love.load()
         tileSize = {width = 0, height = 0},
         tileMap = {}
     }
-    world.tileSize = {width = window.winHeight/world.size.x, height = window.winHeight/world.size.y}
+    worldCfg.tileSize = {width = window.winHeight/world.size.x, height = window.winHeight/world.size.y}
     local yCounter = 0
     for line in world.levelFile:gmatch '%S+' do
         yCounter = yCounter + 1
@@ -88,12 +88,12 @@ function love.load()
             --     tileType = nTileType
             -- }
             -- tile.topLeft = {
-            --     x = window.margin + ((tile.gameCoordinate.x - 1) * world.tileSize.width),
-            --     y = (tile.gameCoordinate.y - 1) * world.tileSize.height
+            --     x = window.margin + ((tile.gameCoordinate.x - 1) * worldCfg.tileSize.width),
+            --     y = (tile.gameCoordinate.y - 1) * worldCfg.tileSize.height
             -- }
             -- tile.center = {
-            --     x = tile.topLeft.x + world.tileSize.width/2,
-            --     y = tile.topLeft.y + world.tileSize.height/2
+            --     x = tile.topLeft.x + worldCfg.tileSize.width/2,
+            --     y = tile.topLeft.y + worldCfg.tileSize.height/2
             -- }
             -- table.insert(world.tileMap, tile)
         end
@@ -143,7 +143,7 @@ end
 
 function love.draw()
     require "floorTile"
-    Tile = require "tile" 
+    local Tile = require "tile" 
     love.graphics.rectangle("fill", window.margin, 0, window.tileSpace.size.x, window.tileSpace.size.y)
     local index = 0
     while index < #world.tileMap do
@@ -190,8 +190,8 @@ function CheckCollision(tile)
     local left, right, top, bottom
     left = tile.topLeft.x
     top = tile.topLeft.y
-    right = tile.topLeft.x + world.tileSize.width
-    bottom = tile.topLeft.y + world.tileSize.height
+    right = tile.topLeft.x + worldCfg.tileSize.width
+    bottom = tile.topLeft.y + worldCfg.tileSize.height
 
     if (IsBetween(ball.center.x, left, right)) then
         if (IsWithin(ball.center.y, top, ball.trueSize.height/2)) then

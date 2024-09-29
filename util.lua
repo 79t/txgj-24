@@ -13,6 +13,19 @@ window = {
     }
 }
 
+worldCfg = {
+    size = {x=32, y=32},
+    tileSize = {
+        width = 18.75, height=18.75
+    },
+    keyBind = {
+        up = 'w',
+        down = 's',
+        left = 'j',
+        right = 'l'
+    }
+}
+
 -- world = {
 --     levelFile = love.filesystem.read("assets/testLevel.txt"),
 --     size = {x = 16, y = 16},
