@@ -56,6 +56,15 @@ function HazardTile:checkCollision(ball)
         ball.center = {
             x = ball.startPos.x,
             y = ball.startPos.y
-        }    end
+        }
+        ball.velocity = {
+            x = .01, 
+            y = .01
+        }
+        ball.acceleration = {
+            x = 0,
+            y = 0
+        }
+    end
     return true
 end
