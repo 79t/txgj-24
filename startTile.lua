@@ -21,10 +21,9 @@ end
 
 -- TODO 
 ---@param ball Ball
----@param world World
 ---@return boolean
-function StartTile:CheckCollision(ball, world)
-    local result = self.super.checkCollision(ball, world)
+function StartTile:checkCollision(ball)
+    local result = self.super.checkCollision(ball)
     return not result == "false"
 end
 

@@ -20,10 +20,9 @@ end
 
 -- TODO: add punnishment for hitting HazardTile
 ---@param ball Ball
----@param world World
 ---@return boolean
-function EndTile:checkCollision(ball, world)
-    local result = self.super.checkCollision(ball, world)
+function EndTile:checkCollision(ball)
+    local result = self.super.checkCollision(ball)
     if (result == "false") then return false end
     -- implement success code
     return true

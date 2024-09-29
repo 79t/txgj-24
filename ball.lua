@@ -11,11 +11,11 @@ require "util"
 local Ball = Object:extend()
 Ball.scaleFactor = 0.25
 
-local maxSpeed = 10
+local maxSpeed = 3
 local accelForce = 0.1
 
 function Ball:new()
-    self.center = {x = window.height/2, y=window.height/2}
+    self.center = {x = 0, y = 0}
     self.velocity = {x = -.1, y = -.1}
     self.acceleration = {x = 0, y = 0}
     self.imageSize = {width = 128, height = 128}

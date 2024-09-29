@@ -18,6 +18,9 @@ function love.load()
 
     local FloorTile = require "floorTile"
     local WallTile = require "wallTile"
+    local HazardTile = require "hazardTile"
+    local EndTile = require "endTile"
+    local StartTile = require "startTile"
     ball = Ball()
 
     local yCounter = 0
@@ -26,22 +29,19 @@ function love.load()
         local xCounter = 0
         for ch in line:gmatch '[^.]+' do --I hate this sm
             xCounter = xCounter + 1
+            local tile = nil
             if ch == "W" then
-                local tile = WallTile(xCounter, yCounter)
-                table.insert(world.tileMap, tile)
+                tile = WallTile(xCounter, yCounter)
             elseif ch == "F" then
-                local tile = FloorTile(xCounter, yCounter)
-                table.insert(world.tileMap, tile)
+                tile = FloorTile(xCounter, yCounter)
             elseif ch == "H" then
-                local tile = HazardTile(xCounter, yCounter)
-                table.insert(world.tileMap, tile)
+                tile = HazardTile(xCounter, yCounter)
             elseif ch == "E" then
-                local tile = EndTile(xCounter, yCounter)
-                table.insert(world.tileMap, tile)
+                tile = EndTile(xCounter, yCounter)
             elseif ch == "S" then
-                local tile = StartTile(xCounter, yCounter)
-                table.insert(world.tileMap, tile)
+                tile = StartTile(xCounter, yCounter)
             end
+            table.insert(world.tileMap, tile)
         end
     end
 
@@ -67,7 +67,7 @@ function love.update()
     while index < #world.tileMap do
         index = index + 1
         local tile = world.tileMap[index]
-        tile:checkCollision(ball) 
+        tile:checkCollision(ball)
     end
     -- if not music:isPlaying( ) then
 	-- 	love.audio.play( music )
