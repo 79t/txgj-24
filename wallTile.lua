@@ -59,17 +59,24 @@ function WallTile:checkCollision(ball)
             collisionSide = "right"
         end
     end
+    local multiplier = .9
+    if (math.abs(ball.velocity.x) < .1) then
+        multiplier = 1.1
+    end
+    if (math.abs(ball.velocity.y) < .1) then
+        multiplier = 1.1
+    end
  
     if (collisionSide == "false") then
         return false
     elseif (collisionSide == "top") then
-        ball.velocity.y = -math.abs(ball.velocity.y)*.9
+        ball.velocity.y = -math.abs(ball.velocity.y)*multiplier
     elseif (collisionSide == "bottom") then
-        ball.velocity.y = math.abs(ball.velocity.y)*.9
+        ball.velocity.y = math.abs(ball.velocity.y)*multiplier
     elseif (collisionSide == "left") then
-        ball.velocity.x = -math.abs(ball.velocity.x)*.9
+        ball.velocity.x = -math.abs(ball.velocity.x)*multiplier
     elseif (collisionSide == "right") then
-        ball.velocity.x = math.abs(ball.velocity.x)*.9
+        ball.velocity.x = math.abs(ball.velocity.x)*multiplier
     end
     return true
 end
