@@ -4,16 +4,14 @@ local GameStateManager = require "GameStateManager"
 local Tutorial = require "states.tutorial"
 local LevelSelectState = require "states.levelSelect"
 
-local image, bg
+local image
 function MenuState:enter()
     print("Going into menu state") 
-    bg = love.graphics.newImage("assets/WallMenu.png")
     image = love.graphics.newImage("assets/MenuAssets.png")
 end
 
 function MenuState:draw()
     love.graphics.setBackgroundColor(1,1,1)
-    love.graphics.draw(bg)
     love.graphics.draw(image, 0, 0)
 end
 
