@@ -24,6 +24,10 @@ function ForceFieldNS:new()
         x = 100,
         y = 0,
     }
+    self.woosh = love.audio.newSource("assets/woosh_1.wav", "static")
+    self.woosh2 = love.audio.newSource("assets/woosh_2.wav", "static")
+    self.woosh:setVolume(.5)
+    self.woosh2:setVolume(.5)
 end
 
 function ForceFieldNS:updateMovement()
@@ -33,6 +37,8 @@ function ForceFieldNS:updateMovement()
             y = 0
         }
         self.image = love.graphics.newImage("assets/ForceFieldNorth.png")
+        love.audio.stop(self.woosh)
+        love.audio.play(self.woosh)
     end
     if (love.keyboard.isDown('s')) then 
         self.topLeft = {
@@ -40,6 +46,8 @@ function ForceFieldNS:updateMovement()
             y = 560
         }
         self.image = love.graphics.newImage("assets/ForceFieldSouth.png")
+        love.audio.stop(self.woosh)
+        love.audio.play(self.woosh)
     end
     if (love.keyboard.isDown('a')) then 
         self.topLeft2 = {
@@ -47,6 +55,8 @@ function ForceFieldNS:updateMovement()
             y = 0
         }
         self.image2 = love.graphics.newImage("assets/ForceFieldWest.png")
+        love.audio.stop(self.woosh2)
+        love.audio.play(self.woosh2)
     end
     if (love.keyboard.isDown('d')) then 
         self.topLeft2 = {
@@ -54,6 +64,8 @@ function ForceFieldNS:updateMovement()
             y = 0
         }
         self.image2 = love.graphics.newImage("assets/ForceFieldEast.png")
+        love.audio.stop(self.woosh2)
+        love.audio.play(self.woosh2)
     end
 end
 
