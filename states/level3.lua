@@ -14,7 +14,6 @@ local Ball = require "ball"
 local ForceFieldNS = require "forceFieldNS"
 ball = Ball()
 forceFieldNS = ForceFieldNS()
-music = love.audio.newSource("assets/1-draft1.mp3", "stream")
 
 
 local World = require "world"
@@ -23,9 +22,12 @@ local ww = World("level3.txt")
 
 function LevelThree:enter()
     print("Going into gamestate 3")
-    music:setVolume(.5)
 
    ball.center = {
+        x = ww.startPos.x,
+        y = ww.startPos.y
+    }
+    ball.startPos = {
         x = ww.startPos.x,
         y = ww.startPos.y
     }
@@ -54,8 +56,6 @@ function LevelThree:update()
     ball:updateMovement()
     ball:updatePos()
     forceFieldNS:updateMovement()
-    if not music:isPlaying( ) then
-		love.audio.play( music )
-	end
+
 end
 return LevelThree

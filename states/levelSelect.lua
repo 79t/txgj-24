@@ -6,16 +6,16 @@ local LevelTwo = require "states.level2"
 local LevelThree = require "states.level3"
 local Tutorial = require "states.tutorial"
 
+local bg = love.graphics.newImage("assets/WallMenu.png")
+local image = love.graphics.newImage("assets/MenuLevels.png")
+
 function LevelSelectState:enter()
     print("going to levelselect")
 end
 
 function LevelSelectState:draw()
-    love.graphics.setBackgroundColor(0,0,0)
-    love.graphics.print("Press 0 for tutorial", 120, 150)
-    love.graphics.print("Press 1 for level 1", 120, 170)
-    love.graphics.print("Press 2 for level 2", 120, 190)
-    love.graphics.print("Press 3 for level 3", 120, 210)
+    love.graphics.draw(bg)
+    love.graphics.draw(image)
 end
 
 function LevelSelectState:keypressed(key, scancode, isrepeat)
@@ -28,6 +28,21 @@ function LevelSelectState:keypressed(key, scancode, isrepeat)
     elseif key == "3" then
         GameStateManager:setState(LevelThree)
     end
+end
+
+function LevelSelectState:mousepressed(x, y, button)
+    if (y > 180 and y < 270) then
+        if (x > 170 and x < 248) then
+            GameStateManager:setState(Tutorial)
+        elseif (x > 298 and x < 375) then
+            GameStateManager:setState(LevelOne)
+        elseif (x > 425 and x < 503) then
+            GameStateManager:setState(LevelTwo)
+        elseif (x > 554 and x < 630) then
+            GameStateManager:setState(LevelThree)
+        end
+    end
+
 end
 
 return LevelSelectState

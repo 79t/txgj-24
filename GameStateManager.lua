@@ -3,6 +3,10 @@ local GameStateManager = {
     previousState = nil
 }
 
+local clickSound = love.audio.newSource("assets/pause.wav", "static")
+clickSound:setVolume(.5)
+
+
 local function assertState(state)
     assert(state == nil or type(state) == "table", "State must be a table or nil")
 end
@@ -28,6 +32,8 @@ function GameStateManager:setState(newState)
 
     self.previousState = self.currentState
     self.currentState = newState
+    love.audio.stop(clickSound)
+    love.audio.play(clickSound)
 
     if self.currentState then
         assertFunction(self.currentState, "enter")
