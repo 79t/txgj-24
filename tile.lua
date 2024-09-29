@@ -7,7 +7,7 @@ require "world"
 ---@field center {x: number, y: number}
 ---@field topLeft {x: number, y: number}
 ---@field gameCoord {x: number, y: number}
----@field checkCollision fun(ball: Ball, world: World): boolean
+---@field checkCollision fun(self: Tile, ball: Ball): boolean
 
 local Tile = Object:extend()
 
@@ -41,11 +41,13 @@ local function isWithin(point1, point2, minDiff)
 end
 
 -- TODO 
----@param ball Ball
+-- 
 function Tile:checkCollision(ball)
     if (self.canCollide == false) then
         return "false"
     end
+
+    print(ball.center.x)
 
     if (inBtwn(self.topLeft.x, ball.center.x, self.topLeft.x + world.tileSize.width)) then
         if (isWithin(ball.center.y, self.topLeft.y, ball.trueSize.height)) then

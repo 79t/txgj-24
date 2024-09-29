@@ -66,8 +66,10 @@ function love.update()
     local index = 0
     while index < #world.tileMap do
         index = index + 1
+        ---@type Tile
         local tile = world.tileMap[index]
-        tile:checkCollision(ball) 
+        -- print(ball)
+        tile:checkCollision(ball)
     end
     -- if not music:isPlaying( ) then
 	-- 	love.audio.play( music )

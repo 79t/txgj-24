@@ -56,4 +56,8 @@ function Ball:updateMovement()
     self.center.y = self.center.y + self.velocity.y
 end
 
+function Ball:__tostring()
+    return "ball: " .. self.topLeft.x .. ", " .. self.topLeft.y
+  end
+
 return Ball

@@ -31,7 +31,7 @@ end
 -- TODO 
 ---@param ball Ball
 ---@return boolean
-function WallTile:CheckCollision(ball)
+function WallTile:checkCollision(ball)
     local collisionSide = self.super.CheckCollision(ball)
     if (collisionSide == "false") then
         return false

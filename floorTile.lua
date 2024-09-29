@@ -19,6 +19,8 @@ local tileSize = {
 function FloorTile:new(x, y)
     FloorTile.super.new(self)
     self.canCollide = false
+    self.x = x
+    self.y = y
     -- self.image = "assets/mog.jpeg"
     self.image = love.graphics.newImage("assets/floorTile.png")
     self.topLeft = {
@@ -32,12 +34,43 @@ function FloorTile:new(x, y)
     }
 end
 
+local function inBtwn(low, mid, up)
+    return low<mid and mid<up
+end
+
+local function isWithin(point1, point2, minDiff)
+    return math.abs(point1 - point2) < minDiff
+end
+
 -- TODO 
 ---@param ball Ball
----@return boolean
+---@return string
 function FloorTile:checkCollision(ball)
-    local result = self.super.checkCollision(ball)
-    return not result == "false"
+    -- print("Collision detected at " .. self.x .. " , " .. self.y .. " " .. ball.topLeft.x .. " " .. ball.topLeft.y)
+    -- local result = FloorTile.super.checkCollision(ball)
+    -- return not result == "false"
+
+    if (self.canCollide == false) then
+        return "false"
+    end
+
+
+    if (inBtwn(self.topLeft.x, ball.center.x, self.topLeft.x + world.tileSize.width)) then
+        if (isWithin(ball.center.y, self.topLeft.y, ball.trueSize.height)) then
+            return "top"
+        elseif (isWithin(ball.center.y, self.topLeft.y + world.tileSize.height, ball.trueSize.height)) then
+            return "bottom"
+        end
+    end
+
+    if (inBtwn(self.topLeft.y, ball.center.y, self.topLeft.y + world.tileSize.width)) then
+        if (isWithin(ball.center.x, self.topLeft.x, ball.trueSize.width)) then
+            return "left"
+        elseif (inBtwn(ball.center.x, self.topLeft.x + world.tileSize.width, ball.trueSize.width)) then
+            return "right"
+        end
+    end
+    return "false"
 end
 
 -- return FloorTile
