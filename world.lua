@@ -5,9 +5,9 @@
 ---@field tileMap Tile[][]
 world = {
     levelFile = love.filesystem.read("assets/level0.txt"),
-    size = {x = 16, y = 16},
+    size = {x = 32, y = 32},
     tileSize = {
-        width = 37.5, height = 37.5 --height/size
+        width = 37.5/2, height = 37.5/2 --height/size
     },
     tileMap = {},
     startPos = {x = 0, y = 0}

@@ -10,7 +10,7 @@ require "util"
 ---@field startPos {x: number, y:number}
 
 local Ball = Object:extend()
-Ball.scaleFactor = 0.25
+Ball.scaleFactor = 0.125
 
 local maxSpeed = 3
 local accelForce = 0.1
@@ -22,8 +22,8 @@ function Ball:new()
     self.imageSize = {width = 128, height = 128}
     self.image = love.graphics.newImage("assets/egg.png")
     self.trueSize = {
-        width = 32,
-        height = 32
+        width = 16,
+        height = 16
     }
     self.topLeft = {
         x = 300 - 16,
