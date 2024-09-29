@@ -49,26 +49,20 @@ function World:new(levelfile)
     }
     local yCounter = 0
     for line in self.levelFile:gmatch '%S+' do
-        print("Line found")
         yCounter = yCounter + 1
         local xCounter = 0
         for ch in line:gmatch '.' do --I hate this sm
             xCounter = xCounter + 1
             local tile = nil
             if ch == "W" then
-                print("W")
                 tile = WallTile(xCounter, yCounter)
             elseif ch == "F" then
-                print("F")
                 tile = FloorTile(xCounter, yCounter)
             elseif ch == "H" then
-                print("H")
                 tile = HazardTile(xCounter, yCounter)
             elseif ch == "E" then
-                print("E")
                 tile = EndTile(xCounter, yCounter)
             elseif ch == "S" then
-                print("S")
                 tile = StartTile(xCounter, yCounter)
                 ball.startPos = {
                     x = tile.topLeft.x,
@@ -76,7 +70,6 @@ function World:new(levelfile)
                 }
             end
             table.insert(self.tileMap, tile)
-            print(self.tileMap)
         end
     end
 end

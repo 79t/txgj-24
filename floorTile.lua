@@ -5,9 +5,7 @@ require "util"
 
 local FloorTile = Tile:extend()
 
-local wHeight = 600 
 local windowMargin = 100
-local wSize = 16
 
 local tileSize = { 
     width = worldCfg.tileSize.width,
@@ -20,7 +18,6 @@ function FloorTile:new(x, y)
     self.canCollide = false
     self.x = x
     self.y = y
-    -- self.image = "assets/mog.jpeg"
     self.image = love.graphics.newImage("assets/floorTile.png")
     self.topLeft = {
         x = windowMargin + ((x - 1) * tileSize.width),
@@ -33,24 +30,9 @@ function FloorTile:new(x, y)
     }
 end
 
-local function inBtwn(low, mid, up)
-    return low<mid and mid<up
-end
-
-local function isWithin(point1, point2, minDiff)
-    return math.abs(point1 - point2) < minDiff
-end
-
--- TODO 
 ---@param ball Ball
----@return 
 function FloorTile:checkCollision(ball)
-    -- print("Collision detected at " .. self.x .. " , " .. self.y .. " " .. ball.topLeft.x .. " " .. ball.topLeft.y)
-    -- local result = FloorTile.super.checkCollision(ball)
-    -- return not result == "false"
-
     return false
 end
 
--- return FloorTile
 return FloorTile

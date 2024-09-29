@@ -26,15 +26,6 @@ worldCfg = {
     }
 }
 
--- world = {
---     levelFile = love.filesystem.read("assets/testLevel.txt"),
---     size = {x = 16, y = 16},
---     tileSize = {
---         x = 37.5, y = 37.5 --height/size
---     },
---     tileMap = {}
--- }
-
 function IsBetween(target, lower, upper)
     return target > lower and target < upper
 end

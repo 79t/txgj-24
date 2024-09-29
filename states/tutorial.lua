@@ -16,9 +16,6 @@ ball = Ball()
 forceFieldNS = ForceFieldNS()
 music = love.audio.newSource("assets/1-draft1.mp3", "stream")
 
--- local GameStateManager = require "GameStateManager"
-
--- require "world"
 
 local World = require "world"
 ww = World("level0.txt")
