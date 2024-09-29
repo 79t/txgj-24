@@ -18,7 +18,7 @@ music = love.audio.newSource("assets/1-draft1.mp3", "stream")
 
 
 local World = require "world"
-ww = World("level1.txt")
+local ww = World("level1.txt")
 
 
 function LevelOne:enter()

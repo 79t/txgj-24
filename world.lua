@@ -34,6 +34,8 @@ require "hazardTile"
 function World:new(levelfile)
     local FloorTile = require "floorTile"
     local WallTile = require "wallTile"
+    print(levelfile)
+    local levFi = love.filesystem.read("assets/" .. levelfile)
     self.levelFile = love.filesystem.read("assets/" .. levelfile)
     self.size = {x=32, y=32}
     self.tileSize = {
@@ -48,7 +50,7 @@ function World:new(levelfile)
         right = 'l'
     }
     local yCounter = 0
-    for line in self.levelFile:gmatch '%S+' do
+    for line in levFi:gmatch '%S+' do
         yCounter = yCounter + 1
         local xCounter = 0
         for ch in line:gmatch '.' do --I hate this sm

@@ -18,15 +18,15 @@ function LevelSelectState:draw()
 end
 
 function LevelSelectState:keypressed(key, scancode, isrepeat)
-    -- if key == "0" then
+    if key == "0" then
         GameStateManager:setState(Tutorial)
-    -- elseif key == "1" then
-        -- GameStateManager:setState(LevelOne)
-    -- elseif key == "2" then
-        -- GameStateManager:setState(LevelTwo)
-    -- elseif key == "3" then
-        -- GameStateManager:setState(LevelThree)
-    -- end
+    elseif key == "1" then
+        GameStateManager:setState(LevelOne)
+    elseif key == "2" then
+        GameStateManager:setState(LevelTwo)
+    elseif key == "3" then
+        GameStateManager:setState(LevelThree)
+    end
 end
 
 return LevelSelectState

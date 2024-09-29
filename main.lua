@@ -1,3 +1,4 @@
+local levelSelect = require "states.levelSelect"
 
 -- this gets vscode debugger working
 if arg[2] == "debug" then
@@ -21,6 +22,9 @@ function love.draw()
 end
 
 function love.keypressed(key, scancode, isrepeat)
+    if key == "b" then
+        GameStateManager:setState(MainMenu)
+    end
     GameStateManager:keypressed(key, scancode, isrepeat)
 end
 
