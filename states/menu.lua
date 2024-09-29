@@ -9,7 +9,6 @@ end
 
 function MenuState:draw()
     love.graphics.print("Labyrinth game, press ENTER to start", 120, 150)
-    
     love.graphics.rectangle("line", 100, 100, 300, 100)
 end
 

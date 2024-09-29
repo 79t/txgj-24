@@ -41,7 +41,6 @@ end
 ---@param ball Ball
 ---@return boolean
 function WallTile:checkCollision(ball)
-    -- local collisionSide = self.super.checkCollision(ball)
     local collisionSide
 
     if (inBtwn(self.topLeft.x, ball.center.x, self.topLeft.x + worldCfg.tileSize.width)) then
