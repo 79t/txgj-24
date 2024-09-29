@@ -14,6 +14,7 @@ function HazardTile:new(x, y)
     HazardTile.super.new(self)
     self.canCollide = true
     self.image = love.graphics.newImage("assets/hazardTile.png")
+    self.sound = love.audio.newSource("assets/impact_1.wav", "static")
 
     self.topLeft = {
         x = windowMargin + ((x - 1) * tileSize.width),
@@ -55,6 +56,8 @@ function HazardTile:checkCollision(ball)
         ball.center = {
             x = ball.startPos.x,
             y = ball.startPos.y
-        }    end
+        }
+        love.audio.play(self.sound)
+    end
     return true
 end
