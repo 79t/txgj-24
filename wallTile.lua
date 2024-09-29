@@ -26,6 +26,8 @@ function WallTile:new(x, y)
         y = self.topLeft.y + tileSize.height / 2
     }
 
+    self.collideSound = love.audio.newSource("assets/bounce_3.wav", "static")
+
 end
 
 
@@ -67,15 +69,19 @@ function WallTile:checkCollision(ball)
     elseif (collisionSide == "top") then
         ball.center.y = self.topLeft.y - ball.trueSize.height/2
         ball.velocity.y = -math.abs(ball.velocity.y)*multiplier
+        love.audio.play(self.collideSound)
     elseif (collisionSide == "bottom") then
         ball.center.y = self.topLeft.y + world.tileSize.height + ball.trueSize.height/2
         ball.velocity.y = math.abs(ball.velocity.y)*multiplier
+        love.audio.play(self.collideSound)
     elseif (collisionSide == "left") then
         ball.velocity.x = -math.abs(ball.velocity.x)*multiplier
         ball.center.x = self.topLeft.x - ball.trueSize.width/2
+        love.audio.play(self.collideSound)
     elseif (collisionSide == "right") then
         ball.velocity.x = math.abs(ball.velocity.x)*multiplier
         ball.center.x = self.topLeft.x + world.tileSize.width + ball.trueSize.width/2
+        love.audio.play(self.collideSound)
     end
     return true
 end
