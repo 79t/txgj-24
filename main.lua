@@ -28,7 +28,7 @@ function love.load()
     for line in world.levelFile:gmatch '%S+' do
         yCounter = yCounter + 1
         local xCounter = 0
-        for ch in line:gmatch '[^.]+' do --I hate this sm
+        for ch in line:gmatch '.' do --I hate this sm
             xCounter = xCounter + 1
             local tile = nil
             if ch == "W" then
