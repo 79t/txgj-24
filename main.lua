@@ -1,4 +1,7 @@
 local levelSelect = require "states.levelSelect"
+levelSelect = require "states.levelSelect"
+mainMenu = require "states.menu"
+winScreen = require "states.win"
 
 -- this gets vscode debugger working
 if arg[2] == "debug" then
