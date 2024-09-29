@@ -22,7 +22,7 @@ function MenuState:keypressed(key, scancode, isrepeat)
 end
 
 function MenuState:mousepressed(x, y, button)
-    if (y > 400 and y < 500 and x > 315 and x < 500) then
+    if (y > 300 and y < 500 and x > 315 and x < 500) then
         GameStateManager:setState(LevelSelectState)
     end
 
