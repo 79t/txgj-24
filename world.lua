@@ -31,7 +31,10 @@ require "endTile"
 require "util"
 require "hazardTile"
 
+local bg
+
 function World:new(levelfile)
+    bg = love.graphics.newImage("assets/WallMenu.png")
     local FloorTile = require "floorTile"
     local WallTile = require "wallTile"
     print(levelfile)
@@ -79,6 +82,7 @@ end
 function World:draw()
     local Tile = require "tile"
     local index = 0
+    love.graphics.draw(bg)
     while index < #self.tileMap do
      index = index+1
      local myTile = self.tileMap[index]

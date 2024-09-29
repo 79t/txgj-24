@@ -29,6 +29,9 @@ function LevelOne:enter()
         x = ball.startPos.x,
         y = ball.startPos.y
     }
+    ball.acceleration = { x = 0, y = 0 }
+    ball.velocity = { x = .001, y = .001 }
+
 end
 
 

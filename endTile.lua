@@ -28,6 +28,8 @@ function EndTile:new(x, y)
         x = self.topLeft.x + tileSize.width / 2,
         y = self.topLeft.y + tileSize.height / 2
     }
+    
+    self.sound = love.audio.newSource("assets/impact_2.wav", "static")
 end
 
 -- TODO: add punnishment for hitting HazardTile
@@ -57,6 +59,7 @@ function EndTile:checkCollision(ball)
         return false
     elseif (collisionSide == "top" or collisionSide == "bottom" or collisionSide == "left" or collisionSide == "right") then
         -- set success code here
+        love.audio.play(self.sound)
         GameStateManager:setState(winScreen)
         -- love.event.quit()
     end
