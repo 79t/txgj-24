@@ -1,7 +1,7 @@
 local MenuState = {}
 
 local GameStateManager = require "GameStateManager"
-local GameState = require "states.game"
+local Tutorial = require "states.tutorial"
 
 function MenuState:enter()
     print("Going into menu state") 
@@ -15,13 +15,13 @@ end
 
 function MenuState:keypressed(key, scancode, isrepeat)
     if key == "return" then
-        GameStateManager:setState(GameState)
+        GameStateManager:setState(Tutorial)
     end
 end
 
 function MenuState:mousepressed(x, y, button)
     if (x > 100 and x < 250 and y > 100 and y < 400) then
-        GameStateManager:setState(GameState)
+        GameStateManager:setState(Tutorial)
     end
 
 end
