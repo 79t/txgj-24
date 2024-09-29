@@ -44,18 +44,18 @@ function WallTile:checkCollision(ball)
     -- local collisionSide = self.super.checkCollision(ball)
     local collisionSide
 
-    if (inBtwn(self.topLeft.x, ball.center.x, self.topLeft.x + world.tileSize.width)) then
-        if (isWithin(ball.center.y, self.topLeft.y, ball.trueSize.height)) then
+    if (inBtwn(self.topLeft.x, ball.center.x, self.topLeft.x + world.tileSize.width/2)) then
+        if (isWithin(ball.center.y, self.topLeft.y, ball.trueSize.height/2)) then
             collisionSide =  "top"
-        elseif (isWithin(ball.center.y, self.topLeft.y + world.tileSize.height, ball.trueSize.height)) then
+        elseif (isWithin(ball.center.y, self.topLeft.y + world.tileSize.height, ball.trueSize.height/2)) then
             collisionSide =  "bottom"
         end
     end
 
-    if (inBtwn(self.topLeft.y, ball.center.y, self.topLeft.y + world.tileSize.width)) then
-        if (isWithin(ball.center.x, self.topLeft.x, ball.trueSize.width)) then
-            collisionSide =  "left"
-        elseif (inBtwn(ball.center.x, self.topLeft.x + world.tileSize.width, ball.trueSize.width)) then
+    if (inBtwn(self.topLeft.y, ball.center.y, self.topLeft.y + world.tileSize.width/2)) then
+        if (isWithin(ball.center.x, self.topLeft.x, ball.trueSize.width/2)) then
+            collisionSide = "left"
+        elseif (isWithin(ball.center.x, self.topLeft.x + world.tileSize.width, ball.trueSize.width/2)) then
             collisionSide = "right"
         end
     end
@@ -63,13 +63,13 @@ function WallTile:checkCollision(ball)
     if (collisionSide == "false") then
         return false
     elseif (collisionSide == "top") then
-        ball.velocity.y = math.abs(ball.velocity.y) * -.9
+        ball.velocity.y = -10
     elseif (collisionSide == "bottom") then
-        ball.velocity.y = math.abs(ball.velocity.y) * .9
+        ball.velocity.y = 10
     elseif (collisionSide == "left") then
-        ball.velocity.x = math.abs(ball.velocity.x) * -.9
+        ball.velocity.x = -10
     elseif (collisionSide == "right") then
-        ball.velocity.x = math.abs(ball.velocity.x) * .9
+        ball.velocity.x = 10
     end
     return true
 end

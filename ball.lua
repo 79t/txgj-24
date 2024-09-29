@@ -11,7 +11,7 @@ require "util"
 local Ball = Object:extend()
 Ball.scaleFactor = 0.25
 
-local maxSpeed = 10
+local maxSpeed = 3
 local accelForce = 0.1
 
 function Ball:new()

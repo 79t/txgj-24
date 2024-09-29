@@ -61,8 +61,6 @@ function love.draw()
 end
 
 function love.update()
-    ball:updateMovement()
-    ball:updatePos()
     local index = 0
     while index < #world.tileMap do
         index = index + 1
@@ -71,6 +69,8 @@ function love.update()
         -- print(ball)
         tile:checkCollision(ball)
     end
+    ball:updateMovement()
+    ball:updatePos()
     -- if not music:isPlaying( ) then
 	-- 	love.audio.play( music )
 	-- end
