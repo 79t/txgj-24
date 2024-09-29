@@ -14,7 +14,7 @@ local tileSize = {
 function StartTile:new(x, y)
     StartTile.super.new(self)
     self.canCollide = true
-    self.image = love.graphics.newImage("assets/startTile.png")
+    self.image = love.graphics.newImage("assets/floorTile.png")
 
     self.topLeft = {
         x = windowMargin + ((x - 1) * tileSize.width),
