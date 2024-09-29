@@ -24,7 +24,7 @@ function ForceFieldNS:new()
 end
 
 function ForceFieldNS:updateMovement()
-    if (love.keyboard.isDown(world.keyBind.up)) then 
+    if (love.keyboard.isDown(worldCfg.keyBind.up)) then 
         self.topLeft = {
             x = 100,
             y = 0
@@ -33,7 +33,7 @@ function ForceFieldNS:updateMovement()
         love.audio.stop(self.woosh)
         love.audio.play(self.woosh)
     end
-    if (love.keyboard.isDown(world.keyBind.down)) then 
+    if (love.keyboard.isDown(worldCfg.keyBind.down)) then 
         self.topLeft = {
             x = 100,
             y = 560
@@ -42,7 +42,7 @@ function ForceFieldNS:updateMovement()
         love.audio.stop(self.woosh)
         love.audio.play(self.woosh)
     end
-    if (love.keyboard.isDown(world.keyBind.left)) then 
+    if (love.keyboard.isDown(worldCfg.keyBind.left)) then 
         self.topLeft2 = {
             x = 100,
             y = 0
@@ -51,7 +51,7 @@ function ForceFieldNS:updateMovement()
         love.audio.stop(self.woosh2)
         love.audio.play(self.woosh2)
     end
-    if (love.keyboard.isDown(world.keyBind.right)) then 
+    if (love.keyboard.isDown(worldCfg.keyBind.right)) then 
         self.topLeft2 = {
             x = 660,
             y = 0

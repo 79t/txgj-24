@@ -1,5 +1,5 @@
 local Tile = require "tile"
-require "world"
+require "util"
 
 ---@class FloorTile: Tile
 
@@ -10,8 +10,8 @@ local windowMargin = 100
 local wSize = 16
 
 local tileSize = { 
-    width = world.tileSize.width,
-    height = world.tileSize.height
+    width = worldCfg.tileSize.width,
+    height = worldCfg.tileSize.height
 }
 
 
