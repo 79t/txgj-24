@@ -17,14 +17,14 @@ function ForceFieldNS:new()
         x = 100,
         y = 0,
     }
-    self.woosh = love.audio.newSource("assets/woosh_1_short.wav", "static")
-    self.woosh2 = love.audio.newSource("assets/woosh_2_short.wav", "static")
+    self.woosh = love.audio.newSource("assets/woosh_1_shorter.wav", "static")
+    self.woosh2 = love.audio.newSource("assets/woosh_2_shorter.wav", "static")
     self.woosh:setVolume(.5)
     self.woosh2:setVolume(.5)
 end
 
 function ForceFieldNS:updateMovement()
-    if (love.keyboard.isDown('w')) then 
+    if (love.keyboard.isDown(world.keyBind.up)) then 
         self.topLeft = {
             x = 100,
             y = 0
@@ -33,7 +33,7 @@ function ForceFieldNS:updateMovement()
         love.audio.stop(self.woosh)
         love.audio.play(self.woosh)
     end
-    if (love.keyboard.isDown('s')) then 
+    if (love.keyboard.isDown(world.keyBind.down)) then 
         self.topLeft = {
             x = 100,
             y = 560
@@ -42,7 +42,7 @@ function ForceFieldNS:updateMovement()
         love.audio.stop(self.woosh)
         love.audio.play(self.woosh)
     end
-    if (love.keyboard.isDown('a')) then 
+    if (love.keyboard.isDown(world.keyBind.left)) then 
         self.topLeft2 = {
             x = 100,
             y = 0
@@ -51,7 +51,7 @@ function ForceFieldNS:updateMovement()
         love.audio.stop(self.woosh2)
         love.audio.play(self.woosh2)
     end
-    if (love.keyboard.isDown('d')) then 
+    if (love.keyboard.isDown(world.keyBind.right)) then 
         self.topLeft2 = {
             x = 660,
             y = 0

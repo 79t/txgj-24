@@ -40,10 +40,10 @@ function Ball:updatePos()
 end
 
 function Ball:updateMovement()
-    if (love.keyboard.isDown('w')) then self.acceleration.y = -accelForce end
-    if (love.keyboard.isDown('a')) then self.acceleration.x = -accelForce end
-    if (love.keyboard.isDown('s')) then self.acceleration.y = accelForce end
-    if (love.keyboard.isDown('d')) then self.acceleration.x = accelForce end
+    if (love.keyboard.isDown(world.keyBind.up)) then self.acceleration.y = -accelForce end
+    if (love.keyboard.isDown(world.keyBind.left)) then self.acceleration.x = -accelForce end
+    if (love.keyboard.isDown(world.keyBind.down)) then self.acceleration.y = accelForce end
+    if (love.keyboard.isDown(world.keyBind.right)) then self.acceleration.x = accelForce end
 
     self.velocity.x = self.velocity.x + self.acceleration.x
     self.velocity.y = self.velocity.y + self.acceleration.y

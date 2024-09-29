@@ -11,5 +11,11 @@ world = {
         width = 18.75, height = 18.75
     },
     tileMap = {},
-    startPos = {x = 0, y = 0}
+    startPos = {x = 0, y = 0},
+    keyBind = {
+        up = 'w',
+        down = 's',
+        left = 'j',
+        right = 'l'
+    }
 }
