@@ -26,8 +26,8 @@ function LevelTwo:enter()
     music:setVolume(.5)
 
    ball.center = {
-        x = ball.startPos.x,
-        y = ball.startPos.y
+        x = ww.startPos.x,
+        y = ww.startPos.y
     }
     ball.acceleration = { x = 0, y = 0 }
     ball.velocity = { x = .001, y = .001 }
