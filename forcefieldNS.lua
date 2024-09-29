@@ -24,8 +24,8 @@ function ForceFieldNS:new()
         x = 100,
         y = 0,
     }
-    self.woosh = love.audio.newSource("assets/woosh_1_short.wav", "static")
-    self.woosh2 = love.audio.newSource("assets/woosh_2_short.wav", "static")
+    self.woosh = love.audio.newSource("assets/woosh_1_shorter.wav", "static")
+    self.woosh2 = love.audio.newSource("assets/woosh_2_shorter.wav", "static")
     self.woosh:setVolume(.5)
     self.woosh2:setVolume(.5)
 end

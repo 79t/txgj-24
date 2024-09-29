@@ -26,7 +26,7 @@ function WallTile:new(x, y)
         y = self.topLeft.y + tileSize.height / 2
     }
 
-    self.collideSound = love.audio.newSource("assets/bounce_3.wav", "static")
+    self.collideSound = love.audio.newSource("assets/bounce_3_short_trimmed.wav", "static")
 
 end
 
