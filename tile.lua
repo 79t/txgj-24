@@ -11,7 +11,7 @@ require "world"
 
 local Tile = Object:extend()
 
-Tile.scaleFactor = .5859
+Tile.scaleFactor = .5859/2
 
 ---@return Tile
 function Tile:new()

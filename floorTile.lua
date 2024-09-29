@@ -10,10 +10,9 @@ local windowMargin = 100
 local wSize = 16
 
 local tileSize = { 
-    width = wHeight / wSize,
-    height = wHeight/ wSize
+    width = world.tileSize.width,
+    height = world.tileSize.height
 }
-
 
 
 function FloorTile:new(x, y)
