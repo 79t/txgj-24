@@ -2,6 +2,15 @@ Tile = require "tile"
 
 StartTile = Tile:extend()
 
+local wHeight = 600 
+local windowMargin = 100
+local wSize = 16
+
+local tileSize = { 
+    width = wHeight / wSize,
+    height = wHeight/ wSize
+}
+
 function StartTile:new(x, y)
     StartTile.super.new(self)
     self.canCollide = true
@@ -23,8 +32,7 @@ end
 ---@param ball Ball
 ---@param world World
 ---@return boolean
-function StartTile:CheckCollision(ball, world)
-    local result = self.super.checkCollision(ball, world)
-    return not result == "false"
+function StartTile:CheckCollision(ball)
+    return false
 end
 
