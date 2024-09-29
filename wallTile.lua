@@ -28,11 +28,38 @@ function WallTile:new(x, y)
 
 end
 
+
+function inBtwn(low, mid, up)
+    return low<mid and mid<up
+end
+
+function isWithin(point1, point2, minDiff)
+    return math.abs(point1 - point2) < minDiff
+end
+
 -- TODO 
 ---@param ball Ball
 ---@return boolean
 function WallTile:checkCollision(ball)
-    local collisionSide = self.super.CheckCollision(ball)
+    -- local collisionSide = self.super.checkCollision(ball)
+    local collisionSide
+
+    if (inBtwn(self.topLeft.x, ball.center.x, self.topLeft.x + world.tileSize.width)) then
+        if (isWithin(ball.center.y, self.topLeft.y, ball.trueSize.height)) then
+            collisionSide =  "top"
+        elseif (isWithin(ball.center.y, self.topLeft.y + world.tileSize.height, ball.trueSize.height)) then
+            collisionSide =  "bottom"
+        end
+    end
+
+    if (inBtwn(self.topLeft.y, ball.center.y, self.topLeft.y + world.tileSize.width)) then
+        if (isWithin(ball.center.x, self.topLeft.x, ball.trueSize.width)) then
+            collisionSide =  "left"
+        elseif (inBtwn(ball.center.x, self.topLeft.x + world.tileSize.width, ball.trueSize.width)) then
+            collisionSide = "right"
+        end
+    end
+ 
     if (collisionSide == "false") then
         return false
     elseif (collisionSide == "top") then

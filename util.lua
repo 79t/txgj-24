@@ -29,3 +29,11 @@ end
 function IsWithin(point1, point2, minDist)
     return (math.abs(point1-point2)) < minDist
 end
+
+function inBtwn(low, mid, up)
+    return low<mid and mid<up
+end
+
+function isWithin(point1, point2, minDiff)
+    return math.abs(point1 - point2) < minDiff
+end
