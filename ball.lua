@@ -19,7 +19,7 @@ function Ball:new()
     self.velocity = {x = -.1, y = -.1}
     self.acceleration = {x = 0, y = 0}
     self.imageSize = {width = 128, height = 128}
-    self.image = love.graphics.newImage("assets/Chaser_Red_Circle.png")
+    self.image = love.graphics.newImage("assets/egg.png")
     self.trueSize = {
         width = 32,
         height = 32
