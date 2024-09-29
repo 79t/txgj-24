@@ -7,6 +7,7 @@ require "util"
 ---@field velocity {x: number, y: number}
 ---@field imageSize {width: number, height: number}
 ---@field image string
+---@field startPos {x: number, y:number}
 
 local Ball = Object:extend()
 Ball.scaleFactor = 0.25
@@ -28,6 +29,7 @@ function Ball:new()
         x = 300 - 16,
         y = 300 - 16,
     }
+    self.startPos = {x = 0, y = 0}
 end
 
 function Ball:updatePos()

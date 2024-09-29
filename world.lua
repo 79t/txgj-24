@@ -9,5 +9,6 @@ world = {
     tileSize = {
         width = 37.5, height = 37.5 --height/size
     },
-    tileMap = {}
+    tileMap = {},
+    startPos = {x = 0, y = 0}
 }

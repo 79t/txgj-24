@@ -26,24 +26,29 @@ function love.load()
         local xCounter = 0
         for ch in line:gmatch '[^.]+' do --I hate this sm
             xCounter = xCounter + 1
+            local tile = nil
             if ch == "W" then
-                local tile = WallTile(xCounter, yCounter)
-                table.insert(world.tileMap, tile)
+                tile = WallTile(xCounter, yCounter)
             elseif ch == "F" then
-                local tile = FloorTile(xCounter, yCounter)
-                table.insert(world.tileMap, tile)
+                tile = FloorTile(xCounter, yCounter)
             elseif ch == "H" then
-                local tile = HazardTile(xCounter, yCounter)
-                table.insert(world.tileMap, tile)
+                tile = HazardTile(xCounter, yCounter)
             elseif ch == "E" then
-                local tile = EndTile(xCounter, yCounter)
-                table.insert(world.tileMap, tile)
+                tile = EndTile(xCounter, yCounter)
             elseif ch == "S" then
-                local tile = StartTile(xCounter, yCounter)
-                table.insert(world.tileMap, tile)
+                tile = StartTile(xCounter, yCounter)
+                ball.startPos = {
+                    x = tile.topLeft.x,
+                    y = tile.topLeft.y
+                }
             end
+            table.insert(world.tileMap, tile)
         end
     end
+    ball.center = {
+        x = ball.startPos.x,
+        y = ball.startPos.y
+    }
 
 end
 

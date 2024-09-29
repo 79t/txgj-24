@@ -52,14 +52,10 @@ function HazardTile:checkCollision(ball)
  
     if (collisionSide == "false") then
         return false
-    elseif (collisionSide == "top") then
-        ball.velocity.y = -math.abs(ball.velocity.y)*.9
-    elseif (collisionSide == "bottom") then
-        ball.velocity.y = math.abs(ball.velocity.y)*.9
-    elseif (collisionSide == "left") then
-        ball.velocity.x = -math.abs(ball.velocity.x)*.9
-    elseif (collisionSide == "right") then
-        ball.velocity.x = math.abs(ball.velocity.x)*.9
-    end
+    elseif (collisionSide == "top") or (collisionSide == "bottom") or (collisionSide == "left") or (collisionSide == "right") then
+        ball.center = {
+            x = ball.startPos.x,
+            y = ball.startPos.y
+        }    end
     return true
 end
