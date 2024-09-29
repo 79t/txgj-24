@@ -10,7 +10,7 @@ require "hazardTile"
 
 local Ball = require "ball"
 local ForceFieldNS = require "forceFieldNS"
-local ball, forceFieldNS
+local ball, forceFieldNS, music
 
 require "world"
 
@@ -21,6 +21,8 @@ function love.load()
     local WallTile = require "wallTile"
     ball = Ball()
     forceFieldNS = ForceFieldNS()
+    music = love.audio.newSource("assets/1-draft1.mp3", "stream")
+    music:setVolume(.5)
 
     local yCounter = 0
     for line in world.levelFile:gmatch '%S+' do
@@ -80,7 +82,7 @@ function love.update()
     ball:updateMovement()
     ball:updatePos()
     forceFieldNS:updateMovement()
-    -- if not music:isPlaying( ) then
-	-- 	love.audio.play( music )
-	-- end
+    if not music:isPlaying( ) then
+		love.audio.play( music )
+	end
 end
