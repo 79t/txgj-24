@@ -9,7 +9,8 @@ require "hazardTile"
 
 
 local Ball = require "ball"
-local ball
+local ForceFieldNS = require "forceFieldNS"
+local ball, forceFieldNS
 
 require "world"
 
@@ -19,6 +20,7 @@ function love.load()
     local FloorTile = require "floorTile"
     local WallTile = require "wallTile"
     ball = Ball()
+    forceFieldNS = ForceFieldNS()
 
     local yCounter = 0
     for line in world.levelFile:gmatch '%S+' do
@@ -63,6 +65,8 @@ function love.draw()
    end
 
    love.graphics.draw(ball.image, ball.topLeft.x, ball.topLeft.y, 0, Ball.scaleFactor, Ball.scaleFactor)
+   love.graphics.draw(forceFieldNS.image, forceFieldNS.topLeft.x, forceFieldNS.topLeft.y)
+   love.graphics.draw(forceFieldNS.image2, forceFieldNS.topLeft2.x, forceFieldNS.topLeft2.y)
 end
 
 function love.update()
@@ -71,11 +75,11 @@ function love.update()
         index = index + 1
         ---@type Tile
         local tile = world.tileMap[index]
-        -- print(ball)
         tile:checkCollision(ball)
     end
     ball:updateMovement()
     ball:updatePos()
+    forceFieldNS:updateMovement()
     -- if not music:isPlaying( ) then
 	-- 	love.audio.play( music )
 	-- end
