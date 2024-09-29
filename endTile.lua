@@ -1,4 +1,6 @@
 local Tile = require "tile"
+local GameStateManager = require "GameStateManager"
+local WinState = require "states.win"
 
 EndTile = Tile:extend()
 
@@ -51,8 +53,9 @@ function EndTile:checkCollision(ball)
  
     if (collisionSide == "false") then
         return false
-    else 
+    elseif (collisionSide == "top" or collisionSide == "bottom" or collisionSide == "left" or collisionSide == "right") then
         -- set success code here
+        GameStateManager:setState(WinState)
     end
     return true
 end
