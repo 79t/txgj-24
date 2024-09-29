@@ -66,7 +66,7 @@ function World:new(levelfile)
                 tile = EndTile(xCounter, yCounter)
             elseif ch == "S" then
                 tile = StartTile(xCounter, yCounter)
-                ball.startPos = {
+                self.startPos = {
                     x = tile.topLeft.x,
                     y = tile.topLeft.y
                 }
